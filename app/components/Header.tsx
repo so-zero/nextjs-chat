@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { supabaseBrowser } from "@/lib/supabase/browser";
 import { User } from "@supabase/supabase-js";
 import { useRouter } from "next/navigation";
+import Online from "./Online";
 
 export default function Header({ user }: { user: User | undefined }) {
   const router = useRouter();
@@ -28,16 +29,13 @@ export default function Header({ user }: { user: User | undefined }) {
     <header className="h-20">
       <div className="p-5 border-b flex items-center justify-between h-full">
         <div>
-          <h1 className="text-xl font-bold">Daily chat</h1>
-          <div className="flex items-center gap-1">
-            <div className="h-4 w-4 bg-green-500 rounded-full animate-pulse"></div>
-            <h1 className="text-sm text-gray-400">2 onlines</h1>
-          </div>
+          <h1 className="text-xl font-bold">Chat</h1>
+          <Online />
         </div>
         {user ? (
-          <Button onClick={handleLogout}>Logout</Button>
+          <Button onClick={handleLogout}>로그아웃</Button>
         ) : (
-          <Button onClick={handleLoginGithub}>Login</Button>
+          <Button onClick={handleLoginGithub}>로그인</Button>
         )}
       </div>
     </header>
